@@ -115,17 +115,17 @@ function resolvePromise(promise2,x,resolve,reject){
         try{
             let then = x.then;
             if(typeof then === 'function'){
-                then.call(x,(res)=>{
+                then.call(x,(y)=>{
                     if(flag)
                         return;
                     flag = true;
-                    resolvePromise(promise2,res,resolve,reject)
+                    resolvePromise(promise2,y,resolve,reject)
                     },
-                    (err)=>{
+                    (r)=>{
                     if(flag)
                         return;
                     flag = true;
-                    reject(err)
+                    reject(r)
                     })
             }else{
                 if(flag)
